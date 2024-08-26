@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://bc58pp0mvof6n"]
+
+[ext_resource type="Script" path="res://scripts/coin.gd" id="1_g8dj8"]
+[ext_resource type="Texture2D" uid="uid://c2d7hamf33235" path="res://assets/sprites/coins-chests-etc-2-0.png" id="1_uc2h3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7s634"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tp3b"]
+atlas = ExtResource("1_uc2h3")
+region = Rect2(416, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sefm4"]
+atlas = ExtResource("1_uc2h3")
+region = Rect2(432, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqeo"]
+atlas = ExtResource("1_uc2h3")
+region = Rect2(448, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd6fa"]
+atlas = ExtResource("1_uc2h3")
+region = Rect2(464, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwnds"]
+atlas = ExtResource("1_uc2h3")
+region = Rect2(480, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac8yi"]
+atlas = ExtResource("1_uc2h3")
+region = Rect2(496, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfupb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tp3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sefm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsqeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd6fa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwnds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ac8yi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sfjg6"]
+radius = 6.0
+
+[node name="coin" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_g8dj8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_7s634")
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_yfupb")
+autoplay = "default"
+frame_progress = 0.282298
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(-0.9, -0.9)
+shape = SubResource("CircleShape2D_sfjg6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

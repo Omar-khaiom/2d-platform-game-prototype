@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://cb50jjjjkxv3k"]
+
+[ext_resource type="Texture2D" uid="uid://c2d7hamf33235" path="res://assets/sprites/coins-chests-etc-2-0.png" id="1_gu884"]
+[ext_resource type="Script" path="res://scripts/heart.gd" id="1_mmrif"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7r7o"]
+atlas = ExtResource("1_gu884")
+region = Rect2(400, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4s8a"]
+atlas = ExtResource("1_gu884")
+region = Rect2(416, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayt50"]
+atlas = ExtResource("1_gu884")
+region = Rect2(432, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idvnr"]
+atlas = ExtResource("1_gu884")
+region = Rect2(448, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uufl6"]
+atlas = ExtResource("1_gu884")
+region = Rect2(464, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2tta"]
+atlas = ExtResource("1_gu884")
+region = Rect2(480, 192, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fu26i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7r7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4s8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayt50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idvnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uufl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2tta")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7ybo"]
+radius = 5.12821
+
+[node name="heart" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_mmrif")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+skew = 0.0296706
+sprite_frames = SubResource("SpriteFrames_fu26i")
+autoplay = "default"
+frame_progress = 0.505518
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+skew = 0.0296706
+shape = SubResource("CircleShape2D_m7ybo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
